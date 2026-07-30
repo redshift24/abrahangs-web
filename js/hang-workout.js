@@ -252,6 +252,11 @@ function runTimer() {
             if (timeRemaining === COUNTDOWN_START_AT && (phase === 'hang5s' || phase === 'rest' || phase === 'hang7s')) {
                 startCountdownAudio();
             }
+            if (phase === 'hang7s' && timeRemaining > 0 && timeRemaining <= COUNTDOWN_START_AT) {
+                muteCountdownAudio();
+            } else if (phase === 'hang7s' && timeRemaining === 0) {
+                unmuteCountdownAudio();
+            }
             updateUI();
         } else {
             advancePhase();
@@ -550,6 +555,7 @@ function stopCountdownAudio() {
     }
     if (!countdownAudio) return;
     try {
+        countdownAudio.muted = false;
         countdownAudio.pause();
         countdownAudio.currentTime = 0;
     } catch (e) {
@@ -580,6 +586,24 @@ function resumeCountdownAudio() {
         // Audio will be stopped in advancePhase() when hangtime phase begins
     } catch (e) {
         console.warn('Audio resume failed:', e);
+    }
+}
+
+function muteCountdownAudio() {
+    if (!countdownAudio) return;
+    try {
+        countdownAudio.muted = true;
+    } catch (e) {
+        // Ignore
+    }
+}
+
+function unmuteCountdownAudio() {
+    if (!countdownAudio) return;
+    try {
+        countdownAudio.muted = false;
+    } catch (e) {
+        // Ignore
     }
 }
 
