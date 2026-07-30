@@ -592,7 +592,7 @@ function resumeCountdownAudio() {
 function muteCountdownAudio() {
     if (!countdownAudio) return;
     try {
-        countdownAudio.volume = 0;
+        countdownAudio.volume = 0.01;
     } catch (e) {
         // Ignore
     }
@@ -602,7 +602,6 @@ function unmuteCountdownAudio() {
     if (!countdownAudio) return;
     try {
         countdownAudio.volume = 1;
-        countdownAudio.play().catch(() => { });
     } catch (e) {
         // Ignore
     }
