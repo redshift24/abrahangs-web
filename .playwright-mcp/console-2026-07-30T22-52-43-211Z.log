@@ -1,3 +1,0 @@
-[      42ms] [LOG] ServiceWorker registered: http://localhost:3000/ @ http://localhost:3000/hang-workout.html:170
-[   34028ms] [LOG] Wake Lock active @ http://localhost:3000/js/hang-workout.js:616
-[  414237ms] [LOG] Wake Lock released @ http://localhost:3000/js/hang-workout.js:636
