@@ -602,6 +602,7 @@ function unmuteCountdownAudio() {
     if (!countdownAudio) return;
     try {
         countdownAudio.volume = 1;
+        countdownAudio.play().catch(() => { });
     } catch (e) {
         // Ignore
     }

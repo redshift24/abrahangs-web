@@ -1,0 +1,66 @@
+- generic [ref=f2e2]:
+  - generic [ref=f2e3]:
+    - heading "Abrahangs" [level=1] [ref=f2e4]
+    - generic [ref=f2e5]:
+      - button "Instructions" [ref=f2e6] [cursor=pointer]
+      - button "Settings" [ref=f2e9] [cursor=pointer]
+      - button "History" [ref=f2e12] [cursor=pointer]
+  - generic [ref=f2e16]:
+    - generic [ref=f2e17]:
+      - generic [ref=f2e18]:
+        - img "Hang exercise illustration" [ref=f2e19]
+        - generic [ref=f2e20]: "1"
+      - heading "4 Finger Chisel/Open" [level=2] [ref=f2e21]
+      - generic [ref=f2e22]:
+        - button [disabled] [ref=f2e23]
+        - generic [ref=f2e26]: 6 sets
+        - generic [ref=f2e27]: 7s per hang
+        - button [ref=f2e28] [cursor=pointer]
+    - generic [ref=f2e31]:
+      - generic [ref=f2e32]: Get ready!
+      - generic [ref=f2e33]: "5"
+      - generic [ref=f2e34]: "1"
+    - generic [ref=f2e41]:
+      - button [ref=f2e42] [cursor=pointer]
+      - button [disabled] [ref=f2e45]
+      - button [ref=f2e49] [cursor=pointer]
+      - button "Next Rep" [ref=f2e52] [cursor=pointer]
+  - generic:
+    - generic:
+      - heading "How to use Abrahangs" [level=2]
+      - generic:
+        - paragraph:
+          - strong: "Aim:"
+          - text: Get stronger by following this sub-max hangs program.
+        - list:
+          - listitem: Load your fingers to between 20% and 40% of bodyweight (bend your knees with your feet on the ground, till fingers are evenly loaded)
+          - listitem: Do the full set once in the morning, and once in the evening, daily
+          - listitem: You should notice some good gains in ~3 weeks if you're consistent
+          - listitem: Shortcut method is to do it at the beginning of every climbing session
+      - paragraph: Tap outside to close
+  - generic:
+    - generic:
+      - heading "Settings" [level=2]
+      - generic:
+        - generic:
+          - generic: Hang time (seconds)
+          - spinbutton "Hang time (seconds)": "7"
+        - generic:
+          - generic: Rest time (seconds)
+          - spinbutton "Rest time (seconds)": "20"
+        - generic:
+          - generic: Auto. Continue Hangs
+          - generic:
+            - checkbox "Auto. Continue Hangs"
+        - generic:
+          - generic: Countdown Sound
+          - combobox "Countdown Sound":
+            - option "Short Beep Countdown" [selected]
+            - option "8-bit Countdown"
+            - option "Race Start Beeps"
+        - generic:
+          - generic: Sound
+          - generic:
+            - checkbox "Sound"
+      - button "Save"
+      - paragraph: Tap outside to close
