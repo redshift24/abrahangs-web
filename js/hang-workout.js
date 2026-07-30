@@ -555,7 +555,7 @@ function stopCountdownAudio() {
     }
     if (!countdownAudio) return;
     try {
-        countdownAudio.muted = false;
+        countdownAudio.volume = 1;
         countdownAudio.pause();
         countdownAudio.currentTime = 0;
     } catch (e) {
@@ -592,7 +592,7 @@ function resumeCountdownAudio() {
 function muteCountdownAudio() {
     if (!countdownAudio) return;
     try {
-        countdownAudio.muted = true;
+        countdownAudio.volume = 0;
     } catch (e) {
         // Ignore
     }
@@ -601,7 +601,7 @@ function muteCountdownAudio() {
 function unmuteCountdownAudio() {
     if (!countdownAudio) return;
     try {
-        countdownAudio.muted = false;
+        countdownAudio.volume = 1;
     } catch (e) {
         // Ignore
     }
