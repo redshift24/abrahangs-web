@@ -774,7 +774,7 @@ async function loadEndBeepBuffer() {
     try {
         let arrayBuffer = preloadedEndBeepArrayBuffer;
         if (!arrayBuffer) {
-            const response = await fetch('sounds/Piano Beep.mp3');
+            const response = await fetch('sounds/Short Beep.mp3');
             if (!response.ok) {
                 console.warn('Failed to fetch end beep file:', response.status);
                 return;
@@ -795,7 +795,7 @@ async function loadEndBeepBuffer() {
 
 async function preloadEndBeepBuffer() {
     try {
-        const response = await fetch('sounds/Piano Beep.mp3');
+        const response = await fetch('sounds/Short Beep.mp3');
         if (response.ok) {
             preloadedEndBeepArrayBuffer = await response.arrayBuffer();
         }

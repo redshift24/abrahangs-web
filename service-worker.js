@@ -17,7 +17,7 @@ const urlsToCache = [
     './sounds/8-bit Countdown.mp3',
     './sounds/Race Start Beeps.mp3',
     './sounds/Short Beep Countdown.mp3',
-    './sounds/Piano Beep.mp3'
+    './sounds/Short Beep.mp3'
 ];
 
 self.addEventListener('install', event => {
