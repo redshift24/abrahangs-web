@@ -39,6 +39,7 @@ let activeSource = null;
 let sourceStartTime = 0;
 let sourceOffset = 0;
 let selectedSound = 'Short Beep Countdown.mp3';
+let endBeepSound = 'Short Beep.mp3';
 let volume = 1.0;
 let audioSessionMode = 'ambient';
 let endBeepSource = null;
@@ -441,6 +442,10 @@ function showSettings() {
         if (soundSelect) {
             soundSelect.value = selectedSound;
         }
+        const endBeepSelect = document.getElementById('end-beep-select');
+        if (endBeepSelect) {
+            endBeepSelect.value = endBeepSound;
+        }
         if (volumeSlider) {
             updateCustomVolumeSlider(Math.round(volume * 100));
         }
@@ -495,6 +500,15 @@ function saveSettings() {
         preloadedArrayBuffer = null;
         loadAudioBuffer();
     }
+    const endBeepSelect = document.getElementById('end-beep-select');
+    if (endBeepSelect) {
+        endBeepSound = endBeepSelect.value;
+        localStorage.setItem('abrahangs_end_beep_sound', endBeepSound);
+        preloadedEndBeepArrayBuffer = null;
+        endBeepBuffer = null;
+        preloadEndBeepBuffer();
+        loadEndBeepBuffer();
+    }
     if (volumeSlider) {
         const sliderPercent = parseInt(volumeSlider.getAttribute('data-volume') || '100', 10);
         volume = sliderPercent / 100;
@@ -541,6 +555,10 @@ function loadSettings() {
     const storedSound = localStorage.getItem('abrahangs_countdown_sound');
     if (storedSound) {
         selectedSound = storedSound;
+    }
+    const storedEndBeep = localStorage.getItem('abrahangs_end_beep_sound');
+    if (storedEndBeep) {
+        endBeepSound = storedEndBeep;
     }
     const storedSoundEnabled = localStorage.getItem('abrahangs_sound_enabled');
     if (storedSoundEnabled !== null) {
@@ -774,7 +792,7 @@ async function loadEndBeepBuffer() {
     try {
         let arrayBuffer = preloadedEndBeepArrayBuffer;
         if (!arrayBuffer) {
-            const response = await fetch('sounds/Short Beep.mp3');
+            const response = await fetch('sounds/' + endBeepSound);
             if (!response.ok) {
                 console.warn('Failed to fetch end beep file:', response.status);
                 return;
@@ -795,7 +813,7 @@ async function loadEndBeepBuffer() {
 
 async function preloadEndBeepBuffer() {
     try {
-        const response = await fetch('sounds/Short Beep.mp3');
+        const response = await fetch('sounds/' + endBeepSound);
         if (response.ok) {
             preloadedEndBeepArrayBuffer = await response.arrayBuffer();
         }
@@ -1036,6 +1054,18 @@ document.addEventListener('DOMContentLoaded', function () {
             selectedSound = soundSelect.value;
             localStorage.setItem('abrahangs_countdown_sound', selectedSound);
             loadAudioBuffer();
+        });
+    }
+
+    const endBeepSelect = document.getElementById('end-beep-select');
+    if (endBeepSelect) {
+        endBeepSelect.addEventListener('change', function () {
+            endBeepSound = endBeepSelect.value;
+            localStorage.setItem('abrahangs_end_beep_sound', endBeepSound);
+            preloadedEndBeepArrayBuffer = null;
+            endBeepBuffer = null;
+            preloadEndBeepBuffer();
+            loadEndBeepBuffer();
         });
     }
 
